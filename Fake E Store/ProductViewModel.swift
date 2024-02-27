@@ -25,7 +25,7 @@ final class ProductViewModel {
                 self.dataBindingHanler?(.message(error.localizedDescription as? Error))
             }
         }
-    }
+    }  
 }
 
 
