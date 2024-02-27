@@ -8,22 +8,32 @@
 import UIKit
 
 class ProductViewController: UIViewController {
+    
+    private var viewModel = ProductViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initViewModel()
+        observeEvent()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func initViewModel() {
+        viewModel.fetchProucts()
     }
-    */
+    
+    private func observeEvent() {
+        viewModel.dataBindingHanler = { [weak self] event in
+            guard let self else { return }
+            
+            switch event {
+            case .loading: break
+            case .loadingComplete: break
+            case .loaded: print(self.viewModel.product)
+            case .message(let error):
+                print(error)
+            }
+            
+        }
+    }
 
 }

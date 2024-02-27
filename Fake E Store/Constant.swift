@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+
+struct Constant {
+    enum API {
+        static let productURL = "https://fakestoreapi.com/products"
+    }
+}
